@@ -1,0 +1,43 @@
+Predicting a Car's MPG
+========================================================
+author: Sanjay Lonkar
+date: 29-Dec-2018
+autosize: true
+
+What is Car's Miles Per Gallon (MPG)?
+========================================================
+
+Predicting a Car's MPG using "mtcars"" Dataset
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sanjay Lonkar  
+29-Dec-2018
+
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```

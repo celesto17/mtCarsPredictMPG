@@ -1,0 +1,55 @@
+---
+title: "Predicting a Car's Miles Per Gallon (MPG)"
+author: "Sanjay Lonkar"
+date: "29 December 2018"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Synopsis
+
+* Course project of week 4 of Developing Data Products
+* Demontrates a Shiny application (server.R & ui.R) deployed on Rstudio's shiny server
+* Easy to use web application. User can select Transmission Type, Number of Cylinders, Weight of Car and Horse Power to get predicted Miles Per Gallon (MPG)
+* URL to access this Shiny application is <https://sanjaylonkar.shinyapps.io/mtCarsPredictMPG/>
+
+
+## Implementation Details
+
+* mtcars dataset is referred to predict Miles Per Gallon (MPG)
+* Application uses Multiple Linear Regression (MLR) model to predict MPG for given Transmission Type , Number of Cylinders , Weight of Car and Horse Power predictors
+* Key Prediction Steps
+
+1. Fit linear model: mFit = lm (mpg ~ am + cyl + wt + hp, data=mtcars)
+2. Set predictors in a data frame: newCarPredictors = data.frame (am=as.numeric(input$ Trans), cyl = as.numeric(input$ Cyl), wt = as.numeric(input$ Weight), hp=as.numeric(input$ HP))
+3. Predict MPG: newCarPredictedMPG  <- predict (mFit, newCarPredictors)
+
+
+## Sample R Code Used in development of application
+
+```{r echo = TRUE}
+
+# Fit linear model
+mFit = lm (mpg ~ am + cyl + wt + hp, data=mtcars)
+# Set am + cyl + wt + hp
+newCarPredictors = data.frame (am=1, cyl = 4, wt = 2, hp=80)
+# PRedict MPG
+newCarPredictedMPG  <- predict (mFit, newCarPredictors)
+newCarPredictedMPG
+
+library(ggplot2)
+plotMPGtoCYL <- ggplot(mtcars, aes(cyl, mpg)) + labs (x = "Number of Cylinders", y = "Miles Per Gallon (MPG)", title = "MPG to Number of Car Cylinders") + geom_point() + geom_smooth (method="lm", color="Green")
+print (plotMPGtoCYL)
+```
+
+## References
+
+* Shiny application - <https://sanjaylonkar.shinyapps.io/mtCarsPredictMPG/>
+* GitHub Repo - <https://github.com/celesto17/mtCarsPredictMPG>
+* Slidy Presentation - <http://rpubs.com/Celesto17/mtCarsPredictMPG>
+
+Thank You!!!
+
